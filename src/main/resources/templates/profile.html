@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hồ sơ người dùng</title>
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+<header>
+    <h1>Hồ sơ người dùng</h1>
+    <a th:href="@{/home}">← Về trang chủ</a>
+</header>
+
+<section class="profile-container">
+    <div class="avatar-section">
+        <img th:src="@{/images/default-avatar.png}" alt="Avatar" class="avatar-img">
+        <h2 th:text="${account.accountName}">Tên người dùng</h2>
+    </div>
+
+    <div class="info-section">
+        <p><strong>Email:</strong> <span th:text="${account.email}">email@example.com</span></p>
+        <p><strong>Vai trò:</strong> <span th:text="${account.role.roleName.label}">Người dùng</span></p>
+    </div>
+
+    <div class="action-buttons">
+        <a class="edit-button" th:href="@{/profile/edit}">Chỉnh sửa hồ sơ</a>
+        <a class="order-button" th:href="@{/my-orders}">Xem đơn hàng</a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Cửa hàng Hoa Lan</p>
+</footer>
+</body>
+</html>

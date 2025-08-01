@@ -1,0 +1,89 @@
+/* Reset & font */
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container để căn giữa tiêu đề và form */
+.register-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Tiêu đề */
+.register-container h2 {
+    margin-bottom: 24px;
+    color: #6a1b9a; /* tím hoa lan */
+}
+
+/* Label và input */
+form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+form input:focus {
+    border-color: #6a1b9a;
+    outline: none;
+}
+
+/* Nút đăng ký */
+form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #6a1b9a;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #4a148c;
+}
+
+/* Link đăng nhập */
+p {
+    margin-top: 20px;
+    color: #333;
+    font-size: 14px;
+}
+
+p a {
+    color: #6a1b9a;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Người Dùng</title>
+    <link rel="stylesheet" th:href="@{/css/users-admin.css}">
+</head>
+<body>
+<div class="container">
+    <h3>Danh sách Người Dùng</h3>
+    <a th:href="@{/admin/dashboard}" class="btn btn-success">← Trở về trang Admin</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Mật khẩu</th>
+            <th>Họ tên</th>
+            <th>Vai trò</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <form th:action="@{/admin/users/update}" method="post">
+                <td th:text="${user.accountId}"></td>
+                    <input type="hidden" name="accountId" th:value="${user.accountId}" />
+                </td>
+                <td th:text="${user.email}"></td>
+
+                <!-- Input chỉnh sửa mật khẩu -->
+                <td>
+                    <input type="text" name="password" th:value="${user.password}" required />
+                </td>
+
+                <!-- Input chỉnh sửa họ tên -->
+                <td>
+                    <input type="text" name="accountName" th:value="${user.accountName}" required />
+                </td>
+
+                <!-- Chọn vai trò -->
+                <td>
+                    <select name="roleName">
+                        <option th:value="ADMIN" th:selected="${user.role.roleName.name() == 'ADMIN'}">ADMIN</option>
+                        <option th:value="CUSTOMER" th:selected="${user.role.roleName.name() == 'CUSTOMER'}">CUSTOMER</option>
+                    </select>
+                </td>
+                <!-- Nút cập nhật -->
+                <td>
+                    <button class="btn btn-success">Cập nhật</button>
+                </td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

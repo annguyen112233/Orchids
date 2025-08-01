@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Đặt hàng thành công</title>
+  <link rel="stylesheet" th:href="@{/css/order-success.css}">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="success-container">
+  <div class="card">
+    <h2 th:text="${message}">Đặt hàng thành công!</h2>
+    <p>Cảm ơn bạn đã tin tưởng và mua hoa tại cửa hàng chúng tôi 💐</p>
+    <a th:href="@{/home}" class="back-home">← Quay lại trang chủ</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh sửa hồ sơ</title>
+    <link rel="stylesheet" th:href="@{/css/edit-profile.css}">
+</head>
+<body>
+<header>
+    <h1>Chỉnh sửa hồ sơ</h1>
+    <a th:href="@{/profile}">← Quay lại hồ sơ</a>
+</header>
+
+<section class="profile-edit-container">
+    <form th:action="@{/profile/edit}" th:object="${changePasswordDTO}" method="post">
+        <div>
+            <label for="currentPassword">Mật khẩu hiện tại:</label>
+            <input type="password" id="currentPassword" th:field="*{currentPassword}" required />
+        </div>
+
+        <div>
+            <label for="newPassword">Mật khẩu mới:</label>
+            <input type="password" id="newPassword" th:field="*{newPassword}" required />
+        </div>
+
+        <div>
+            <label for="confirmPassword">Xác nhận mật khẩu mới:</label>
+            <input type="password" id="confirmPassword" th:field="*{confirmPassword}" required />
+        </div>
+
+        <div>
+            <button type="submit">Cập nhật mật khẩu</button>
+        </div>
+
+        <div th:if="${error}" style="color:red;">
+            <p th:text="${error}"></p>
+        </div>
+        <div th:if="${success}" style="color:green;">
+            <p th:text="${success}"></p>
+        </div>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 Cửa hàng Hoa Lan</p>
+</footer>
+</body>
+</html>

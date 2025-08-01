@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Đơn hàng của bạn</title>
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+<h2>Danh sách đơn hàng</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Mã đơn</th>
+        <th>Ngày đặt</th>
+        <th>Số lượng</th>
+        <th>Tổng tiền</th>
+        <th>Trạng thái</th>
+        <th>Tên hoa lan</th>
+        <th>Người đặt</th> <!-- ✅ Thêm cột mới -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.orderId}">123</td>
+        <td th:text="${order.orderDateFormatted}"></td>
+        <td th:text="${order.quantity}"></td>
+        <td th:text="${order.totalAmount}">...</td>
+        <td th:text="${order.orderStatusVietnamese}">PENDING</td>
+        <td th:text="${order.orchidName}">Hoa Lan A</td>
+        <td th:text="${order.accountName}">Nguyễn Văn A</td> <!-- ✅ Dòng mới -->
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

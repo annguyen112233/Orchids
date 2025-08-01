@@ -1,0 +1,32 @@
+/* admin-orders.css */
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.delete-button {
+    color: white;
+    background-color: red;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-button {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}

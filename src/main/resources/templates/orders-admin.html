@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý đơn hàng</title>
+    <link rel="stylesheet" th:href="@{/css/admin-orders.css}">
+</head>
+<body>
+
+<h2 style="text-align:center;">Danh sách đơn hàng</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên khách hàng</th>
+        <th>Ngày đặt</th>
+        <th>Trạng thái</th>
+        <th>Tổng tiền</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.orderId}">1</td>
+        <td th:text="${order.accountName}">Nguyễn Văn A</td>
+        <td th:text="${order.orderDateFormatted}">2025-07-18</td>
+        <td> <!-- 👈 Thêm td cho cột Trạng thái -->
+            <form th:action="@{'/admin/orders/update-status/' + ${order.orderId}}" method="post">
+                <select name="status">
+                    <option th:value="PENDING"
+                            th:selected="${order.orderStatus.name() == 'PENDING'}">Chờ xử lý</option>
+                    <option th:value="PROCESSING"
+                            th:selected="${order.orderStatus.name() == 'PROCESSING'}">Đang xử lý</option>
+                    <option th:value="DELIVERED"
+                            th:selected="${order.orderStatus.name() == 'DELIVERED'}">Đã giao</option>
+                    <option th:value="CONFIRM"
+                            th:selected="${order.orderStatus.name() == 'CONFIRM'}">Đã xác nhận</option>
+                    <option th:value="CANCELLED"
+                            th:selected="${order.orderStatus.name() == 'CANCELLED'}">Đã hủy</option>
+                </select>
+                <button type="submit">Cập nhật</button>
+            </form>
+        </td>
+        <td th:text="${order.totalAmount}">1500000</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="back-button">
+    <a th:href="@{/admin/dashboard}" style="text-decoration:none;">← Trở về trang admin</a>
+</div>
+
+</body>
+</html>

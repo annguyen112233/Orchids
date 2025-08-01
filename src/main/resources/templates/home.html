@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Trang chủ - Cửa hàng Hoa Lan</title>
+  <link rel="stylesheet" th:href="@{/css/home.css}">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <h1>CỬA HÀNG HOA LAN</h1>
+  <nav>
+    <a th:href="@{/home}">Trang chủ</a>
+    <!-- Avatar -->
+    <!-- Hiển thị avatar và menu nếu đã đăng nhập -->
+    <div class="user-dropdown" th:if="${accounts != null}">
+      <img class="avatar" th:src="@{/images/default-avatar.png}" alt="Avatar" onclick="toggleDropdown()">
+      <span class="username" th:text="${accounts.accountName}">Tên người dùng</span>
+      <div id="dropdownMenu" class="dropdown-menu" style="display: none;">
+        <a th:href="@{/profile}">Hồ sơ</a>
+        <a th:href="@{/my-orders}">Đơn hàng</a>
+        <a th:href="@{/logout}">Đăng xuất</a>
+      </div>
+    </div>
+
+    <!-- Hiển thị nút đăng nhập nếu chưa đăng nhập -->
+    <div class="auth-links" th:if="${accounts == null}">
+      <a th:href="@{/login}">Đăng nhập</a> |
+      <a th:href="@{/register}">Đăng ký</a>
+    </div>
+
+  </nav>
+</header>
+
+
+<section class="banner">
+  <img src="/images/banner_orchid.png" alt="Banner Hoa Lan">
+</section>
+
+<section class="products">
+  <h2>Sản phẩm nổi bật</h2>
+  <div class="product-list">
+    <div class="product-card" th:each="orchid : ${orchids}">
+      <img th:src="@{'/orchid/' + ${orchid.orchidUrl}}" th:alt="${orchid.orchidName}">
+      <h3 th:text="${orchid.orchidName}">Tên Hoa</h3>
+      <p th:text="'Giá: ' + ${#numbers.formatInteger(orchid.price, 0, 'POINT')} + 'đ'">Giá</p>
+
+      <!-- Nếu đã đăng nhập: cho vào trang chi tiết để mua -->
+      <a th:if="${accounts != null}"
+         th:href="@{'/orchid/detail/' + ${orchid.orchidId}}"
+         class="buy-button">
+        Mua ngay
+      </a>
+
+      <!-- Nếu chưa đăng nhập: chuyển hướng tới trang đăng nhập -->
+      <a th:if="${accounts == null}"
+         th:href="@{/login}"
+         class="buy-button">
+        Mua ngay
+      </a>
+    </div>
+
+  </div>
+</section>
+<div class="pagination">
+  <span th:if="${currentPage > 0}">
+    <a th:href="@{/home(page=${currentPage - 1})}">« Trang trước</a>
+  </span>
+
+  <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+    <a th:href="@{/home(page=${i})}"
+       th:text="${i + 1}"
+       th:class="${i == currentPage} ? 'current' : ''">1</a>
+  </span>
+
+  <span th:if="${currentPage < totalPages - 1}">
+    <a th:href="@{/home(page=${currentPage + 1})}">Trang sau »</a>
+  </span>
+</div>
+
+
+<footer>
+  <p>&copy; 2025 Cửa hàng Hoa Lan - Tất cả quyền được bảo lưu.</p>
+</footer>
+
+<script>
+  function toggleDropdown() {
+    const menu = document.getElementById("dropdownMenu");
+    const isVisible = menu.style.display === "flex";
+    menu.style.display = isVisible ? "none" : "flex";
+  }
+
+  // Ẩn dropdown nếu click ra ngoài
+  document.addEventListener("click", function (event) {
+    const dropdown = document.getElementById("dropdownMenu");
+    const avatar = document.querySelector(".avatar");
+
+    if (!avatar.contains(event.target) && !dropdown.contains(event.target)) {
+      dropdown.style.display = "none";
+    }
+  });
+</script>
+
+</body>
+</html>

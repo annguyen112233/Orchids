@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Hoa Lan</title>
+    <link rel="stylesheet" th:href="@{/css/orchidAdmin.css}">
+</head>
+<body>
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3>Danh sách Hoa Lan</h3>
+        <div>
+            <a th:href="@{/admin/dashboard}" class="btn btn-primary" style="margin-right: 10px;">← Về Dashboard</a>
+            <a th:href="@{/admin/orchids/create}" class="btn btn-success">+ Thêm Hoa Lan</a>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Danh mục</th>
+            <th>Mô tả</th>
+            <th>Giá</th>
+            <th>Tự nhiên</th>
+            <th>Ảnh</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="orchid : ${orchidPage.content}">
+            <td th:text="${orchid.orchidId}"></td>
+            <td th:text="${orchid.orchidName}"></td>
+            <td th:text="${orchid.categoryId.categoryName}"></td>
+            <td th:text="${orchid.orchidDescription}"></td>
+            <td th:text="${orchid.price}"></td>
+            <td th:text="${orchid.isNatural}"></td>
+            <td>
+                <img th:src="${orchid.orchidUrl}" alt="Ảnh hoa lan" style="width: 80px; height: auto;" />
+            </td>
+            <td>
+                <a th:href="@{/admin/orchids/edit/{id}(id=${orchid.orchidId})}" class="btn btn-warning btn-sm">Sửa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <ul class="pagination">
+            <li th:if="${currentPage > 0}">
+                <a th:href="@{'/admin/orchids'(page=${currentPage - 1}, size=5)}">« Trước</a>
+            </li>
+            <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                th:classappend="${i == currentPage} ? 'active'">
+                <a th:href="@{'/admin/orchids'(page=${i}, size=5)}"
+                   th:text="${i + 1}"></a>
+            </li>
+            <li th:if="${currentPage < totalPages - 1}">
+                <a th:href="@{'/admin/orchids'(page=${currentPage + 1}, size=5)}">Sau »</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

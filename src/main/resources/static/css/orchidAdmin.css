@@ -1,0 +1,156 @@
+/* Base */
+body {
+    background: #f5f8fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+h3 {
+    color: #2d3748;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #edf2f7;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-success {
+    background-color: #38a169;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #2f855a;
+}
+
+.btn-warning {
+    background-color: #ed8936;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #dd6b20;
+}
+
+.btn-danger {
+    background-color: #e53e3e;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c53030;
+}
+
+/* Form */
+form {
+    margin-bottom: 20px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 12px 0;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.pagination li {
+    display: inline-block;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    color: #2d3748;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #edf2f7;
+}
+
+.pagination .active a,
+.pagination .active span {
+    background-color: #38a169;
+    color: white;
+    border-color: #38a169;
+}
+.btn-primary {
+    background-color: #3182ce;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2b6cb0;
+}
+
+

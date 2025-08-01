@@ -8,8 +8,7 @@ Website thương mại điện tử đơn giản giúp người dùng xem, chọ
 
 - 💻 Backend: **Spring Boot**
 - 🎨 Frontend: **Thymeleaf (template engine)**
-- 🗄️ Cơ sở dữ liệu: **MySQL**
-- 🔐 Bảo mật: Spring Security (nếu có)
+- 🗄️ Cơ sở dữ liệu: **SQL server**
 - 📦 Build tool: Maven
 
 ---
